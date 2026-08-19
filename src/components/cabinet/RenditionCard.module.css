@@ -11,11 +11,18 @@
   content: "☾";
   position: absolute;
   top: 14px;
-  right: 20px;
+  left: 20px;
   font-size: 26px;
   color: var(--border-softer);
   opacity: 0.6;
   pointer-events: none;
+}
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
 }
 
 .title {
@@ -25,6 +32,113 @@
   font-weight: 500;
   font-size: 26px;
   color: var(--cream);
+}
+
+.options {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.optionsBtn {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  color: var(--periwinkle);
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.optionsBtn:hover {
+  color: var(--cream);
+  border-color: var(--border-soft);
+}
+
+.menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 240px;
+  background: var(--plum);
+  border: 1px solid var(--border-soft);
+  border-radius: 14px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+  z-index: 20;
+}
+
+.menuItem {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  color: var(--cream);
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.menuItem:hover {
+  background: var(--plum-light);
+}
+
+.menuItemDanger {
+  color: var(--blush);
+}
+
+.menuDivider {
+  height: 1px;
+  background: var(--border-soft);
+  margin: 6px 4px;
+}
+
+.menuStatus {
+  margin: 0;
+  padding: 10px;
+  font-size: 0.88rem;
+  color: var(--periwinkle);
+}
+
+.confirm {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 4px;
+}
+
+.confirmText {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--cream);
+  line-height: 1.4;
+}
+
+.confirmActions {
+  display: flex;
+  gap: 6px;
+}
+
+.confirmActions .menuItem {
+  flex: 1;
+  text-align: center;
+}
+
+.menuError {
+  margin: 6px 4px 2px;
+  font-size: 0.8rem;
+  color: var(--blush);
+  line-height: 1.4;
 }
 
 .chip {

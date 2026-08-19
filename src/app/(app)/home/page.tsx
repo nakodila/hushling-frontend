@@ -29,7 +29,7 @@ export default function HomePage() {
 
       const { data } = await supabase
         .from("renditions")
-        .select("id, status, output_path, error, lullaby:lullabies(title)")
+        .select("id, status, output_path, error, lullaby_id, voice_sample_id, lullaby:lullabies(title)")
         .order("created_at", { ascending: false });
 
       if (!active) return;
@@ -42,6 +42,14 @@ export default function HomePage() {
       active = false;
     };
   }, []);
+
+  function handleDeleted(id: string) {
+    setRenditions((prev) => prev.filter((r) => r.id !== id));
+  }
+
+  function handleRerendered(id: string, next: RenditionRow) {
+    setRenditions((prev) => prev.map((r) => (r.id === id ? { ...r, ...next } : r)));
+  }
 
   if (loading) {
     return null;
@@ -59,7 +67,13 @@ export default function HomePage() {
       <main className={styles.main}>
         <div className={styles.cards}>
           {renditions.map((r) => (
-            <RenditionCard key={r.id} rendition={r} title={r.lullaby?.title ?? "Untitled lullaby"} />
+            <RenditionCard
+              key={r.id}
+              rendition={r}
+              title={r.lullaby?.title ?? "Untitled lullaby"}
+              onDeleted={handleDeleted}
+              onRerendered={handleRerendered}
+            />
           ))}
 
           <a href="/create" className={styles.ghostCard}>
