@@ -21,22 +21,6 @@
   flex-wrap: wrap;
 }
 
-.noVoice {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  flex-wrap: wrap;
-  padding: 18px 20px;
-  border: 1px solid var(--border-soft);
-  border-radius: var(--radius-card);
-}
-
-.noVoiceText {
-  margin: 0;
-  color: var(--periwinkle);
-}
-
 .empty {
   color: var(--periwinkle);
   text-align: center;

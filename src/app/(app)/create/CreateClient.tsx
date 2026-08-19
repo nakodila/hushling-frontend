@@ -193,14 +193,19 @@ function VoiceBranch({
 }
 
 function NoVoiceSample({ recordReturnTo }: { recordReturnTo: string | undefined }) {
-  const router = useRouter();
-
-  useEffect(() => {
-    const params = recordReturnTo ? `?returnTo=${encodeURIComponent(recordReturnTo)}` : "";
-    router.replace(`/record${params}`);
-  }, [router, recordReturnTo]);
-
-  return <p className={styles.status}>Taking you to record your voice…</p>;
+  return (
+    <div className={styles.statusBlock}>
+      <p className={styles.status}>
+        You&apos;ll need to record a voice sample before this lullaby can be made.
+      </p>
+      <Button
+        variant="primary"
+        href={`/record${recordReturnTo ? `?returnTo=${encodeURIComponent(recordReturnTo)}` : ""}`}
+      >
+        Record your voice
+      </Button>
+    </div>
+  );
 }
 
 function TrackedVoiceBranch({

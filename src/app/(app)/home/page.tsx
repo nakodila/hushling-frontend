@@ -5,7 +5,6 @@ import { supabase } from "@/lib/supabase/client";
 import { Button } from "@/components/ui/Button";
 import { Label } from "@/components/ui/Label";
 import { RenditionCard, type RenditionRow } from "@/components/cabinet/RenditionCard";
-import { VoiceStatusBanner, type VoiceSampleRow } from "@/components/cabinet/VoiceStatusBanner";
 import styles from "./page.module.css";
 
 interface RenditionWithLullaby extends RenditionRow {
@@ -15,7 +14,6 @@ interface RenditionWithLullaby extends RenditionRow {
 export default function HomePage() {
   const [loading, setLoading] = useState(true);
   const [renditions, setRenditions] = useState<RenditionWithLullaby[]>([]);
-  const [voiceSample, setVoiceSample] = useState<VoiceSampleRow | null>(null);
 
   useEffect(() => {
     let active = true;
@@ -30,17 +28,13 @@ export default function HomePage() {
         return;
       }
 
-      const [renditionsRes, voiceRes] = await Promise.all([
-        supabase
-          .from("renditions")
-          .select("id, status, output_path, error, lullaby:lullabies(title)")
-          .order("created_at", { ascending: false }),
-        supabase.from("voice_samples").select("id, status").maybeSingle(),
-      ]);
+      const { data } = await supabase
+        .from("renditions")
+        .select("id, status, output_path, error, lullaby:lullabies(title)")
+        .order("created_at", { ascending: false });
 
       if (!active) return;
-      setRenditions((renditionsRes.data as unknown as RenditionWithLullaby[]) ?? []);
-      setVoiceSample(voiceRes.data as VoiceSampleRow | null);
+      setRenditions((data as unknown as RenditionWithLullaby[]) ?? []);
       setLoading(false);
     }
 
@@ -63,17 +57,6 @@ export default function HomePage() {
             Create a new lullaby
           </Button>
         </div>
-
-        {voiceSample ? (
-          <VoiceStatusBanner voiceSample={voiceSample} />
-        ) : (
-          <div className={styles.noVoice}>
-            <p className={styles.noVoiceText}>Record your voice to start creating lullabies.</p>
-            <Button href="/record" variant="secondary">
-              Record your voice
-            </Button>
-          </div>
-        )}
 
         {renditions.length === 0 ? (
           <p className={styles.empty}>Your lullabies will show up here once they&apos;re ready.</p>
