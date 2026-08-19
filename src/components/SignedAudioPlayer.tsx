@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { createSignedUrl } from "@/lib/supabase/signedUrl";
-import { Button } from "@/components/ui/Button";
+import { PlayIcon } from "@/components/icons/PlayIcon";
 import styles from "./SignedAudioPlayer.module.css";
 
 interface SignedAudioPlayerProps {
@@ -50,9 +50,15 @@ export function SignedAudioPlayer({
   if (!url) {
     return (
       <div className={styles.wrap}>
-        <Button variant="primary" onClick={handlePlay} disabled={loading}>
-          {loading ? "Loading…" : label}
-        </Button>
+        <button
+          type="button"
+          className={styles.playBtn}
+          onClick={handlePlay}
+          disabled={loading}
+          aria-label={label}
+        >
+          <PlayIcon />
+        </button>
         {error && <p className={styles.error}>{error}</p>}
       </div>
     );

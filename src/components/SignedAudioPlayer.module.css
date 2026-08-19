@@ -5,6 +5,31 @@
   align-items: flex-start;
 }
 
+.playBtn {
+  flex: 0 0 auto;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--blush);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+.playBtn:hover:not(:disabled) {
+  transform: scale(1.06);
+}
+.playBtn:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+.playBtn svg {
+  width: 16px;
+  height: 16px;
+}
+
 .player {
   width: 100%;
 }

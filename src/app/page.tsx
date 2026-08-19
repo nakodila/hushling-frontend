@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabase/client";
 import { Button } from "@/components/ui/Button";
+import { PlayIcon } from "@/components/icons/PlayIcon";
 import styles from "./page.module.css";
 
 const starPositions = [
@@ -94,14 +95,6 @@ const samples = [
     ],
   },
 ];
-
-function PlayIcon() {
-  return (
-    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-      <path d="M3 2l9 5-9 5V2z" fill="currentColor" />
-    </svg>
-  );
-}
 
 export default function Home() {
   const router = useRouter();
