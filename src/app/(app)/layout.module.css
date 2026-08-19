@@ -1,0 +1,64 @@
+.shell {
+  position: relative;
+  min-height: 100dvh;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  margin: 0 auto;
+}
+
+@media (min-width: 900px) {
+  .content {
+    width: 70vw;
+  }
+}
+
+/* ---------- Sparkling stars in the margins ---------- */
+.stars {
+  display: none;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@media (min-width: 900px) {
+  .stars {
+    display: block;
+    position: fixed;
+    inset: 0;
+  }
+}
+
+.starDot {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: var(--cream);
+  border-radius: 50%;
+  animation: twinkle 4s ease-in-out infinite;
+}
+.starDot:nth-child(2n) {
+  animation-delay: 1.3s;
+}
+.starDot:nth-child(3n) {
+  animation-delay: 2.6s;
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.15;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .starDot {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
