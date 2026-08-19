@@ -1,0 +1,58 @@
+.wrap {
+  width: 100%;
+  max-width: 560px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.progressRow {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.direction {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.02em;
+  color: var(--periwinkle);
+}
+
+.text {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 3vw, 1.35rem);
+  line-height: 1.55;
+  color: var(--cream);
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.player {
+  width: 100%;
+}
+
+.clipActions {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+}
+
+.error {
+  margin: 0;
+  color: var(--blush);
+  font-size: 0.9rem;
+}

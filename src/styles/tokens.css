@@ -1,0 +1,25 @@
+:root {
+  /* Palette */
+  --ink: #1b1b3a;
+  --plum: #2e2a4a;
+  --plum-light: #3a3560;
+  --periwinkle: #6c6ea0;
+  --butter: #f5dfa6;
+  --blush: #f2c6c2;
+  --cream: #faf6f0;
+
+  /* Derived */
+  --border-soft: rgba(108, 110, 160, 0.25);
+  --border-softer: rgba(250, 246, 240, 0.28);
+  --shadow-butter: 0 8px 24px rgba(245, 223, 166, 0.18);
+
+  /* Type */
+  --font-display: "Fraunces", serif;
+  --font-body: "Karla", sans-serif;
+  --font-mono: "Space Mono", monospace;
+
+  /* Rhythm */
+  --radius-card: 20px;
+  --radius-pill: 100px;
+  --section-pad: clamp(56px, 10vw, 88px);
+}

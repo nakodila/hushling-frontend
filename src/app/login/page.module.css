@@ -1,0 +1,117 @@
+.wrap {
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--section-pad) clamp(18px, 5vw, 28px);
+}
+
+.panel {
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  text-align: center;
+}
+
+.heading {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(1.8rem, 5vw, 2.4rem);
+  margin: 0 0 8px;
+}
+
+.subtext {
+  color: var(--periwinkle);
+  margin: 0;
+}
+
+.card {
+  width: 100%;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  text-align: left;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.fieldLabel {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--periwinkle);
+}
+
+.input {
+  background: var(--plum-light);
+  border: 1px solid var(--border-soft);
+  border-radius: 12px;
+  padding: 12px 14px;
+  color: var(--cream);
+  font-family: var(--font-body);
+  font-size: 1rem;
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--butter);
+}
+
+.error {
+  color: var(--blush);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.submit {
+  width: 100%;
+  margin-top: 4px;
+}
+
+.toggle {
+  align-self: center;
+  background: none;
+  border: none;
+  color: var(--periwinkle);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  color: var(--periwinkle);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--border-soft);
+}
+
+.guest {
+  width: 100%;
+}

@@ -1,0 +1,106 @@
+.wrap {
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--section-pad) clamp(18px, 5vw, 28px);
+}
+
+.panel {
+  width: 100%;
+  max-width: 520px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+}
+
+.heading {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(1.6rem, 4.5vw, 2.1rem);
+  margin: 0;
+}
+
+.subtext {
+  color: var(--periwinkle);
+  margin: 0;
+  line-height: 1.6;
+}
+
+.card {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  text-align: left;
+  margin-top: 8px;
+}
+
+.tiers {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.tierOption {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 16px;
+  border: 1px solid var(--border-soft);
+  border-radius: 14px;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.tierOption[data-selected="true"] {
+  border-color: var(--butter);
+}
+
+.tierRadio {
+  margin-top: 4px;
+  accent-color: var(--butter);
+}
+
+.tierBody {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.tierLabel {
+  font-weight: 600;
+  color: var(--cream);
+}
+
+.tierBlurb {
+  font-size: 0.88rem;
+  color: var(--periwinkle);
+}
+
+.consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.92rem;
+  color: var(--cream);
+  cursor: pointer;
+}
+
+.consentCheckbox {
+  margin-top: 3px;
+  accent-color: var(--butter);
+}
+
+.error {
+  color: var(--blush);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.submit {
+  width: 100%;
+}

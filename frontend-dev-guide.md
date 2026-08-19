@@ -51,9 +51,12 @@ step below can just build, not re-litigate:
   project (from `.env` at the backend repo root — `SUPABASE_URL` and
   `SUPABASE_PUBLISHABLE_KEY`). **Never** the `SUPABASE_SECRET_KEY` — that
   stays worker-only and must never reach frontend code or a public repo.
-- Read access to `client/landing/index.html` and `client/landing/styles.css`
-  for the design system (Steps 1–2 reference them directly). **These two
-  files are read-only across this entire guide — never edit or move them.**
+- Read access to `frontend/landing/index.html` and
+  `frontend/landing/styles.css` for the design system (Steps 1–2 reference
+  them directly). These files live inside the frontend project itself, not
+  the backend `client/` directory, since the landing-page design is only
+  ever needed here. **They are read-only across this entire guide — never
+  edit them.**
 
 ---
 
@@ -124,7 +127,7 @@ the actual app pages yet.
 
 ## 2. Extract the design system into a shared token/component layer
 
-**Description:** `client/landing/index.html` and `styles.css` are the
+**Description:** `frontend/landing/index.html` and `styles.css` are the
 approved visual identity (the "Hushling" twilight-nursery theme) but they're
 static marketing HTML — nothing in there is reusable by Next.js components
 as-is. This step turns the CSS custom properties, type scale, and existing
@@ -140,13 +143,13 @@ side-by-side.
 In the Next.js project at /Users/nakodila/projects/lullaby/frontend, build a
 shared design-token and base-component layer matching the visual identity
 already established in
-/Users/nakodila/projects/lullaby/client/landing/styles.css and
+/Users/nakodila/projects/lullaby/frontend/landing/styles.css and
 index.html. Read both files first — they are the source of truth. Do not
-edit or move either file; they stay exactly where they are as a permanent
+edit either file; they stay exactly where they are as a permanent
 reference.
 
 1. Create frontend/src/styles/tokens.css defining these CSS custom
-   properties on :root, copied exactly from client/landing/styles.css:
+   properties on :root, copied exactly from frontend/landing/styles.css:
    --ink:#1B1B3A, --plum:#2E2A4A, --plum-light:#3A3560,
    --periwinkle:#6C6EA0, --butter:#F5DFA6, --blush:#F2C6C2,
    --cream:#FAF6F0, --border-soft:rgba(108,110,160,0.25),
@@ -187,7 +190,7 @@ reference.
 5. Add a route at frontend/src/app/design-preview/page.tsx rendering the
    full token palette as swatches, both Button variants, one Card, one
    Label, and one ProgressBar at 60%, so the system can be visually
-   compared against client/landing/index.html side by side.
+   compared against frontend/landing/index.html side by side.
 
 Scope boundary: only the shared token/component layer and the preview
 route. Do not build auth, recording, or any real app page yet — those
@@ -230,7 +233,7 @@ components from frontend/src/components/ui/ (from Step 2, Button/Card/Label).
    (supabase.auth.signUp / signInWithPassword), toggled between the two
    modes on one page. Style with the Card/Button components — dark theme,
    matches the landing page's hero centering and spacing conventions
-   (see .hero / .wrap in client/landing/styles.css for the layout rhythm
+   (see .hero / .wrap in frontend/landing/styles.css for the layout rhythm
    to echo, without copying hero-specific content).
 
 2. A "Try it as a guest" secondary-styled link/button on the same page that

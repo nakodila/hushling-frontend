@@ -1,0 +1,20 @@
+{
+  "$comment": "Single source of truth for voice-sample length tiers. Read by the recording UI (reading-sample.ts) and the worker (worker/rvc_pipeline.py) so the two can never disagree about what a tier means. See lalaby-build-blueprint.md §11/§13.",
+  "defaultTier": "standard",
+  "tiers": {
+    "standard": {
+      "label": "Standard",
+      "targetMinutes": 5,
+      "minSeconds": 240,
+      "includesExtension": false,
+      "blurb": "About 5 minutes of reading. Good results, quicker to record."
+    },
+    "extended": {
+      "label": "Extended",
+      "targetMinutes": 10,
+      "minSeconds": 480,
+      "includesExtension": true,
+      "blurb": "About 10 minutes of reading. Noticeably closer to your real voice."
+    }
+  }
+}
