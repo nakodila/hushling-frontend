@@ -1,13 +1,29 @@
 .card {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 18px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 24px 60px -28px rgba(0, 0, 0, 0.65);
+}
+
+.card::after {
+  content: "☾";
+  position: absolute;
+  top: 14px;
+  right: 20px;
+  font-size: 26px;
+  color: var(--border-softer);
+  opacity: 0.6;
+  pointer-events: none;
 }
 
 .title {
   margin: 0;
   font-family: var(--font-display);
-  font-size: 1.15rem;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 26px;
   color: var(--cream);
 }
 

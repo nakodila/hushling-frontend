@@ -1,34 +1,196 @@
-.wrap {
-  min-height: 100dvh;
-  padding: var(--section-pad) clamp(18px, 5vw, 28px);
-  display: flex;
-  justify-content: center;
-}
-
-.panel {
-  width: 100%;
-  max-width: 880px;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-
-.header {
+.topbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
+  gap: 18px;
   flex-wrap: wrap;
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+  padding: clamp(36px, 5vw, 56px) clamp(20px, 4vw, 56px) 0;
 }
 
-.empty {
-  color: var(--periwinkle);
-  text-align: center;
-  padding: 40px 0;
+.sectionLabel {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--butter);
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-.grid {
+.sectionLabel::before {
+  content: "✦";
+  font-size: 11px;
+}
+
+.main {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 16px;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 32px clamp(20px, 4vw, 56px) 40px;
+  flex: 1;
+}
+
+.cards {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ---------- Ghost card ---------- */
+.ghostCard {
+  border: 2px dashed var(--border-soft);
+  border-radius: var(--radius-card);
+  padding: 34px 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.ghostCard:hover {
+  border-color: var(--butter);
+  background: rgba(245, 222, 179, 0.04);
+  transform: translateY(-2px);
+}
+
+.ghostPlus {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1.5px solid var(--text-faint);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: var(--periwinkle);
+  transition: 0.25s ease;
+}
+
+.ghostCard:hover .ghostPlus {
+  border-color: var(--butter);
+  color: var(--butter);
+}
+
+.ghostTitle {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 19px;
+  color: var(--periwinkle);
+}
+
+.ghostText {
+  font-size: 13px;
+  color: var(--text-faint);
+}
+
+/* ---------- Moon hero ---------- */
+.hero {
+  position: relative;
+  min-height: 520px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 18px;
+}
+
+.cloud {
+  position: absolute;
+  opacity: 0.55;
+  animation: drift ease-in-out infinite alternate;
+}
+
+.cloud1 {
+  top: 8%;
+  left: 2%;
+  width: 150px;
+  animation-duration: 9s;
+}
+
+.cloud2 {
+  top: 60%;
+  right: 0;
+  width: 120px;
+  animation-duration: 11s;
+  animation-delay: 1s;
+}
+
+.cloud3 {
+  bottom: 6%;
+  left: 12%;
+  width: 100px;
+  animation-duration: 8s;
+  animation-delay: 0.5s;
+}
+
+@keyframes drift {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(26px);
+  }
+}
+
+.moonWrap {
+  position: relative;
+  width: 230px;
+  animation: float 5s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+.speech {
+  margin: 0;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 19px;
+  color: var(--periwinkle);
+  max-width: 280px;
+  line-height: 1.4;
+}
+
+@media (max-width: 880px) {
+  .main {
+    grid-template-columns: 1fr;
+    padding: 28px 24px 40px;
+  }
+  .topbar {
+    padding: 36px 24px 0;
+  }
+  .hero {
+    min-height: 380px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cloud,
+  .moonWrap {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
 }

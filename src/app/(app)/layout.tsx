@@ -6,24 +6,26 @@ import { supabase } from "@/lib/supabase/client";
 import { NavBar } from "@/components/nav/NavBar";
 import styles from "./layout.module.css";
 
-const starPositions = [
-  { top: "6%", left: "4%" },
-  { top: "16%", left: "9%" },
-  { top: "28%", left: "3%" },
-  { top: "40%", left: "10%" },
-  { top: "52%", left: "5%" },
-  { top: "64%", left: "8%" },
-  { top: "76%", left: "3%" },
-  { top: "88%", left: "9%" },
-  { top: "10%", left: "92%" },
-  { top: "22%", left: "96%" },
-  { top: "34%", left: "90%" },
-  { top: "46%", left: "95%" },
-  { top: "58%", left: "91%" },
-  { top: "70%", left: "97%" },
-  { top: "82%", left: "92%" },
-  { top: "94%", left: "96%" },
-];
+/* Seeded PRNG (mulberry32) so the starfield is random-looking yet identical
+   on server and client — Math.random() here would break hydration. */
+function mulberry32(seed: number) {
+  return () => {
+    seed |= 0;
+    seed = (seed + 0x6d2b79f5) | 0;
+    let t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+const rand = mulberry32(0x5eed);
+const stars = Array.from({ length: 70 }, () => ({
+  size: rand() * 2.4 + 1,
+  top: rand() * 100,
+  left: rand() * 100,
+  duration: rand() * 3 + 2,
+  delay: rand() * 4,
+}));
 
 export default function AppLayout({ children }: { children: ReactNode }) {
   const router = useRouter();
@@ -61,15 +63,27 @@ export default function AppLayout({ children }: { children: ReactNode }) {
 
   return (
     <div className={styles.shell}>
-      <div className={styles.stars} aria-hidden="true">
-        {starPositions.map((pos, i) => (
-          <div key={i} className={styles.starDot} style={pos} />
+      <div className={styles.starfield} aria-hidden="true">
+        {stars.map((star, i) => (
+          <div
+            key={i}
+            className={styles.star}
+            style={{
+              width: `${star.size}px`,
+              height: `${star.size}px`,
+              top: `${star.top}%`,
+              left: `${star.left}%`,
+              animationDuration: `${star.duration}s`,
+              animationDelay: `${star.delay}s`,
+            }}
+          />
         ))}
       </div>
       <div className={styles.content}>
         <NavBar />
         {children}
       </div>
+      <footer className={styles.footer}>handcrafted lullabies, one hush at a time ✦</footer>
     </div>
   );
 }

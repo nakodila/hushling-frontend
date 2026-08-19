@@ -1,49 +1,57 @@
 .shell {
+  /* App redesign theme (landing/hushling-redesign-v2.html). The shared
+     tokens are remapped here, scoped to the app shell, so the landing and
+     login pages keep the original palette while every component rendered
+     inside the app picks up the new one without per-file changes. */
+  --ink: #14132b;
+  --plum: #2b2854;
+  --plum-light: #3a3670;
+  --periwinkle: #a9a5cf;
+  --butter: #f5deb3;
+  --butter-strong: #f0cf94;
+  --blush: #eeb3c8;
+  --cream: #f6f2ea;
+  --lavender: #b6a4e8;
+  --text-faint: #726e9c;
+  --border-soft: rgba(245, 222, 179, 0.14);
+  --border-softer: rgba(245, 222, 179, 0.25);
+  --shadow-butter: 0 18px 40px -14px rgba(245, 222, 179, 0.45);
+  --radius-card: 26px;
+  --font-body: var(--font-quicksand), sans-serif;
+
   position: relative;
+  display: flex;
+  flex-direction: column;
   min-height: 100dvh;
+  font-family: var(--font-body);
+  color: var(--cream);
+  background:
+    radial-gradient(ellipse 900px 600px at 78% 8%, #211f4a, transparent 60%),
+    radial-gradient(ellipse 700px 500px at 10% 90%, #241f4d, transparent 55%),
+    var(--ink);
 }
 
 .content {
   position: relative;
   z-index: 1;
-  width: 100%;
-  margin: 0 auto;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
-@media (min-width: 900px) {
-  .content {
-    width: 70vw;
-  }
-}
-
-/* ---------- Sparkling stars in the margins ---------- */
-.stars {
-  display: none;
+/* ---------- Starfield ---------- */
+.starfield {
+  position: fixed;
+  inset: 0;
   pointer-events: none;
   z-index: 0;
 }
 
-@media (min-width: 900px) {
-  .stars {
-    display: block;
-    position: fixed;
-    inset: 0;
-  }
-}
-
-.starDot {
+.star {
   position: absolute;
-  width: 3px;
-  height: 3px;
   background: var(--cream);
   border-radius: 50%;
-  animation: twinkle 4s ease-in-out infinite;
-}
-.starDot:nth-child(2n) {
-  animation-delay: 1.3s;
-}
-.starDot:nth-child(3n) {
-  animation-delay: 2.6s;
+  animation: twinkle ease-in-out infinite;
 }
 
 @keyframes twinkle {
@@ -52,12 +60,24 @@
     opacity: 0.15;
   }
   50% {
-    opacity: 0.7;
+    opacity: 0.9;
   }
 }
 
+/* ---------- Footer ---------- */
+.footer {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 30px 24px 46px;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 14px;
+  color: var(--text-faint);
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .starDot {
+  .star {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
   }

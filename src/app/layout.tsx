@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Fraunces, Karla, Space_Mono } from "next/font/google";
+import { Fraunces, Karla, Quicksand, Space_Mono } from "next/font/google";
 import "./globals.css";
 
 const fraunces = Fraunces({
@@ -14,6 +14,13 @@ const karla = Karla({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   variable: "--font-karla",
+  display: "swap",
+});
+
+const quicksand = Quicksand({
+  subsets: ["latin"],
+  weight: ["500", "600", "700"],
+  variable: "--font-quicksand",
   display: "swap",
 });
 
@@ -33,7 +40,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${fraunces.variable} ${karla.variable} ${spaceMono.variable}`}
+      className={`${fraunces.variable} ${karla.variable} ${quicksand.variable} ${spaceMono.variable}`}
     >
       <body>{children}</body>
     </html>

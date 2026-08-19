@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  padding: clamp(14px, 3vw, 20px) clamp(18px, 5vw, 28px);
+  padding: clamp(18px, 3vw, 26px) clamp(20px, 4vw, 56px);
   border-bottom: 1px solid var(--border-soft);
 }
 
@@ -11,7 +11,7 @@
   font-family: var(--font-display);
   font-style: italic;
   font-weight: 500;
-  font-size: 1.3rem;
+  font-size: 24px;
   color: var(--cream);
   text-decoration: none;
 }
@@ -19,20 +19,23 @@
 .logoAccent {
   color: var(--butter);
   font-style: normal;
+  font-weight: 600;
 }
 
 .navLinks {
   display: flex;
-  gap: 28px;
-  font-size: 0.92rem;
+  gap: clamp(20px, 3vw, 36px);
+  font-size: 15px;
+  font-weight: 600;
   color: var(--periwinkle);
-  margin-right: auto;
-  padding-left: 40px;
 }
 
 .navLinks a {
   text-decoration: none;
   color: inherit;
+  display: flex;
+  align-items: center;
+  gap: 6px;
   transition: color 0.2s;
 }
 
@@ -40,20 +43,30 @@
   color: var(--cream);
 }
 
+.navLinks a.active {
+  color: var(--cream);
+}
+
+.navLinks a.active::before {
+  content: "✦";
+  color: var(--butter);
+  font-size: 10px;
+}
+
 .account {
   position: relative;
 }
 
 .avatarBtn {
-  width: 36px;
-  height: 36px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
-  background: var(--plum-light);
+  background: var(--plum);
   border: 1px solid var(--border-soft);
-  color: var(--cream);
+  color: var(--butter);
   font-family: var(--font-body);
   font-weight: 700;
-  font-size: 0.95rem;
+  font-size: 14px;
   cursor: pointer;
   display: flex;
   align-items: center;

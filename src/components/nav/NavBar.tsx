@@ -1,13 +1,14 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabase/client";
 import { DeleteAccountModal } from "./DeleteAccountModal";
 import styles from "./NavBar.module.css";
 
 export function NavBar() {
   const router = useRouter();
+  const pathname = usePathname();
   const [email, setEmail] = useState<string | null>(null);
   const [userId, setUserId] = useState<string | null>(null);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -68,8 +69,12 @@ export function NavBar() {
         </a>
 
         <div className={styles.navLinks}>
-          <a href="/home">Your lullabies</a>
-          <a href="/create">Create</a>
+          <a href="/home" className={pathname === "/home" ? styles.active : undefined}>
+            Your lullabies
+          </a>
+          <a href="/create" className={pathname === "/create" ? styles.active : undefined}>
+            Create
+          </a>
         </div>
 
         <div className={styles.account} ref={menuRef}>
