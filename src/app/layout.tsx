@@ -32,7 +32,7 @@ const spaceMono = Space_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Hushling — Lullabies in your own voice",
+  title: "Lallababy — Lullabies in your own voice",
   description: "Record your voice once. Sing to them for years.",
 };
 
