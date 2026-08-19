@@ -22,7 +22,7 @@ const starPositions = [
 const steps = [
   {
     title: "Record your voice",
-    text: "Read a short passage aloud — about a minute. That's all Hushling needs to learn how you sound.",
+    text: "Read a short passage aloud — about a minute. That's all Lallababy needs to learn how you sound.",
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
         <rect x="9" y="2" width="6" height="12" rx="3" stroke="var(--butter)" strokeWidth="1.6" />
@@ -125,7 +125,7 @@ export default function Home() {
     <>
       <nav className={`${styles.nav} ${styles.wrap}`}>
         <div className={styles.logo}>
-          hush<span className={styles.logoAccent}>ling</span>
+          lalla<span className={styles.logoAccent}>baby</span>
         </div>
         <div className={styles.navLinks}>
           <a href="#how">How it works</a>
@@ -222,7 +222,7 @@ export default function Home() {
           </h1>
           <p className={styles.heroSub}>
             Record a few seconds of your voice. Choose a mood, a melody, even your child&apos;s
-            name in the words. Hushling sings the rest, gently, in a voice they already know.
+            name in the words. Lallababy sings the rest, gently, in a voice they already know.
           </p>
           <div className={styles.heroCtas}>
             <Button href="/login" variant="primary" className={styles.ctaButton}>
@@ -313,7 +313,7 @@ export default function Home() {
                 Recordings stay private, always
               </h2>
               <p className={styles.trustText}>
-                A voice is personal — especially a parent&apos;s. Hushling only ever uses your
+                A voice is personal — especially a parent&apos;s. Lallababy only ever uses your
                 recording to make lullabies for you, never to train shared models, and never
                 shared with anyone else.
               </p>
@@ -351,7 +351,7 @@ export default function Home() {
       </section>
 
       <footer className={styles.footer}>
-        <div className={styles.wrap}>hushling — lullabies, in your own voice</div>
+        <div className={styles.wrap}>Lallababy — lullabies, in your own voice</div>
       </footer>
     </>
   );

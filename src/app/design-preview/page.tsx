@@ -43,7 +43,7 @@ export default function DesignPreviewPage() {
         <Label>Card</Label>
         <Card>
           <p className={styles.cardText}>
-            Read a short passage aloud — about a minute. That&apos;s all Hushling needs to learn how you sound.
+            Read a short passage aloud — about a minute. That&apos;s all Lallababy needs to learn how you sound.
           </p>
         </Card>
       </section>

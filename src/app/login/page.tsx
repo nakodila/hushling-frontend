@@ -75,7 +75,7 @@ export default function LoginPage() {
   return (
     <main className={styles.wrap}>
       <div className={styles.panel}>
-        <Label>Hushling</Label>
+        <Label>Lallababy</Label>
 
         <div>
           <h1 className={styles.heading}>

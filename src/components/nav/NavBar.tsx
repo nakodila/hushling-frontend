@@ -65,7 +65,7 @@ export function NavBar() {
     <>
       <nav className={styles.nav}>
         <a href="/home" className={styles.logo}>
-          hush<span className={styles.logoAccent}>ling</span>
+          lalla<span className={styles.logoAccent}>baby</span>
         </a>
 
         <div className={styles.navLinks}>

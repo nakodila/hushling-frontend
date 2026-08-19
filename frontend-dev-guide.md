@@ -1,4 +1,4 @@
-# Hushling Frontend — Build Guide
+# Lallababy Frontend — Build Guide
 
 This is the only document you need to build the frontend. It supersedes
 `old-lullaby-app-build-blueprint.md` and `lalaby-build-blueprint.md` for
@@ -47,7 +47,7 @@ step below can just build, not re-litigate:
 ## Prerequisites before Step 1
 
 - Node.js + npm available locally.
-- The **anon/publishable** Supabase key and project URL for the `hushling`
+- The **anon/publishable** Supabase key and project URL for the `Lallababy`
   project (from `.env` at the backend repo root — `SUPABASE_URL` and
   `SUPABASE_PUBLISHABLE_KEY`). **Never** the `SUPABASE_SECRET_KEY` — that
   stays worker-only and must never reach frontend code or a public repo.
@@ -73,7 +73,7 @@ repo's `git status` shows nothing new under `frontend/`.
 **Prompt for Claude Code:**
 
 ```
-Scaffold a new, independently-deployable Next.js frontend for the Hushling
+Scaffold a new, independently-deployable Next.js frontend for the Lallababy
 lullaby app at /Users/nakodila/projects/lullaby/frontend/.
 
 1. Create the Next.js app (App Router, TypeScript) at that exact path:
@@ -128,7 +128,7 @@ the actual app pages yet.
 ## 2. Extract the design system into a shared token/component layer
 
 **Description:** `frontend/landing/index.html` and `styles.css` are the
-approved visual identity (the "Hushling" twilight-nursery theme) but they're
+approved visual identity (the "Lallababy" twilight-nursery theme) but they're
 static marketing HTML — nothing in there is reusable by Next.js components
 as-is. This step turns the CSS custom properties, type scale, and existing
 component patterns (buttons, cards, kickers) into a shared layer the rest of
@@ -218,7 +218,7 @@ project's scope, and confirm they're done (or offer to do them if the user
 has backend access in this session):
 1. In /Users/nakodila/projects/lullaby/supabase/config.toml, `enable_anonymous_sign_ins`
    under [auth] needs to go from false to true (locally, and the equivalent
-   remote-project setting on hushling).
+   remote-project setting on Lallababy).
 2. A demo `profiles` row needs to exist with real, ready `renditions` rows
    already seeded (status='ready', pointing at real files in the
    `renditions` bucket) so a guest sees a populated cabinet immediately.
