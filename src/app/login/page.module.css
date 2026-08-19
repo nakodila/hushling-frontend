@@ -92,26 +92,3 @@
   padding: 0;
 }
 
-.divider {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  width: 100%;
-  color: var(--periwinkle);
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-
-.divider::before,
-.divider::after {
-  content: "";
-  flex: 1;
-  height: 1px;
-  background: var(--border-soft);
-}
-
-.guest {
-  width: 100%;
-}

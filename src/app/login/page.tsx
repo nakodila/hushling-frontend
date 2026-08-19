@@ -18,7 +18,6 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
-  const [guestLoading, setGuestLoading] = useState(false);
 
   useEffect(() => {
     let active = true;
@@ -63,22 +62,6 @@ export default function LoginPage() {
 
     if (!data.session) {
       setError("Check your email to confirm your account before signing in.");
-      return;
-    }
-
-    router.replace("/home");
-  }
-
-  async function handleGuest() {
-    setError(null);
-    setGuestLoading(true);
-
-    const { error: authError } = await supabase.auth.signInAnonymously();
-
-    setGuestLoading(false);
-
-    if (authError) {
-      setError(authError.message);
       return;
     }
 
@@ -158,12 +141,6 @@ export default function LoginPage() {
             </button>
           </form>
         </Card>
-
-        <div className={styles.divider}>or</div>
-
-        <Button variant="secondary" className={styles.guest} onClick={handleGuest} disabled={guestLoading}>
-          {guestLoading ? "Signing you in…" : "Try it as a guest"}
-        </Button>
       </div>
     </main>
   );
