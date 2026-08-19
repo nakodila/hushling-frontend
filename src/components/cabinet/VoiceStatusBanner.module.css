@@ -1,0 +1,9 @@
+.banner {
+  padding: 16px 20px;
+}
+
+.text {
+  margin: 0;
+  color: var(--butter);
+  font-size: 0.92rem;
+}

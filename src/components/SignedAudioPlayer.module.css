@@ -1,0 +1,16 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+.player {
+  width: 100%;
+}
+
+.error {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--blush);
+}

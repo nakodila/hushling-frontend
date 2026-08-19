@@ -16,6 +16,7 @@ export default function SessionClient() {
   const tierParam = searchParams.get("tier");
   const consent = searchParams.get("consent");
   const tier: SampleTierId | null = tierParam && isSampleTierId(tierParam) ? tierParam : null;
+  const returnTo = searchParams.get("returnTo") || "/home";
 
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -99,7 +100,7 @@ export default function SessionClient() {
       return;
     }
 
-    router.replace("/home");
+    router.replace(returnTo);
   }
 
   return (

@@ -1,0 +1,65 @@
+.wrap {
+  min-height: 100dvh;
+  padding: var(--section-pad) clamp(18px, 5vw, 28px);
+  display: flex;
+  justify-content: center;
+}
+
+.panel {
+  width: 100%;
+  max-width: 640px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.heading {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(1.6rem, 4.5vw, 2.1rem);
+  margin: 0;
+}
+
+.empty {
+  color: var(--periwinkle);
+  text-align: center;
+  padding: 40px 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  color: var(--cream);
+}
+
+.status {
+  color: var(--periwinkle);
+  margin: 0;
+}
+
+.statusBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.error {
+  margin: 0;
+  color: var(--blush);
+  font-size: 0.9rem;
+}
