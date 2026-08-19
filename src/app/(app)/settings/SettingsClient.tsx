@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabase/client";
 import { removeAllUnderPrefix } from "@/lib/supabase/storageCleanup";
+import { deleteAllVoiceData } from "@/lib/supabase/deleteVoiceData";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { Label } from "@/components/ui/Label";
@@ -117,95 +118,10 @@ export default function SettingsClient() {
     setDeleteStage("working");
     setDeleteError(null);
 
-    setDeleteStep("Finding your generated lullabies…");
-    const { data: renditions, error: renditionsFetchError } = await supabase
-      .from("renditions")
-      .select("id, output_path")
-      .eq("voice_sample_id", voiceSample.id);
-
-    if (renditionsFetchError) {
+    const { error } = await deleteAllVoiceData(userId, voiceSample, setDeleteStep);
+    if (error) {
       setDeleteStage("error");
-      setDeleteError(
-        `Couldn't look up your generated lullabies: ${renditionsFetchError.message}. Nothing was deleted — you can try again.`
-      );
-      return;
-    }
-
-    const renditionPaths = (renditions ?? [])
-      .map((r) => r.output_path)
-      .filter((p): p is string => !!p);
-
-    if (renditionPaths.length > 0) {
-      setDeleteStep("Removing your generated lullabies…");
-      const { error: renditionStorageError } = await supabase.storage
-        .from("renditions")
-        .remove(renditionPaths);
-
-      if (renditionStorageError) {
-        setDeleteStage("error");
-        setDeleteError(
-          `Couldn't remove your generated lullaby files: ${renditionStorageError.message}. Nothing was deleted — you can try again.`
-        );
-        return;
-      }
-    }
-
-    setDeleteStep("Removing your recorded audio…");
-    const { error: voiceStorageError } = await removeAllUnderPrefix("voice-samples", userId);
-    if (voiceStorageError) {
-      setDeleteStage("error");
-      setDeleteError(
-        `Couldn't remove your recorded audio: ${voiceStorageError.message}. Your generated lullaby files were already removed — you can try again.`
-      );
-      return;
-    }
-
-    if (voiceSample.rvc_model_path) {
-      // voice-models has no SELECT/list policy for authenticated users (by
-      // design — the raw model is never meant to be readable, only
-      // erasable), so this deletes the exact known key from
-      // rvc_model_path rather than discovering it via list().
-      setDeleteStep("Removing your trained voice model…");
-      const { error: modelStorageError } = await supabase.storage
-        .from("voice-models")
-        .remove([voiceSample.rvc_model_path]);
-
-      if (modelStorageError) {
-        setDeleteStage("error");
-        setDeleteError(
-          `Couldn't remove your trained voice model: ${modelStorageError.message}. Your recorded audio was already removed — you can try again.`
-        );
-        return;
-      }
-    }
-
-    if (renditionPaths.length > 0) {
-      setDeleteStep("Removing your generated lullaby records…");
-      const { error: renditionsDeleteError } = await supabase
-        .from("renditions")
-        .delete()
-        .eq("voice_sample_id", voiceSample.id);
-
-      if (renditionsDeleteError) {
-        setDeleteStage("error");
-        setDeleteError(
-          `Couldn't remove your generated lullaby records: ${renditionsDeleteError.message}. Files were already removed — you can try again.`
-        );
-        return;
-      }
-    }
-
-    setDeleteStep("Removing your voice sample record…");
-    const { error: voiceRowError } = await supabase
-      .from("voice_samples")
-      .delete()
-      .eq("id", voiceSample.id);
-
-    if (voiceRowError) {
-      setDeleteStage("error");
-      setDeleteError(
-        `Couldn't remove your voice sample record: ${voiceRowError.message}. Everything else was already deleted — you can try again.`
-      );
+      setDeleteError(error);
       return;
     }
 

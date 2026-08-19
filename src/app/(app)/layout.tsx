@@ -3,6 +3,7 @@
 import { useEffect, useState, type ReactNode } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabase/client";
+import { NavBar } from "@/components/nav/NavBar";
 
 export default function AppLayout({ children }: { children: ReactNode }) {
   const router = useRouter();
@@ -38,5 +39,10 @@ export default function AppLayout({ children }: { children: ReactNode }) {
     return null;
   }
 
-  return <>{children}</>;
+  return (
+    <>
+      <NavBar />
+      {children}
+    </>
+  );
 }
