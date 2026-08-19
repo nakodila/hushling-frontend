@@ -43,64 +43,65 @@ export default function SessionClient() {
     setSubmitting(true);
     setError(null);
 
-    const {
-      data: { user },
-    } = await supabase.auth.getUser();
+    try {
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
 
-    if (!user) {
+      if (!user) {
+        setError("Your session expired. Please sign in again.");
+        return;
+      }
+
+      if (!sampleIdRef.current) {
+        sampleIdRef.current = crypto.randomUUID();
+      }
+      const storagePath = `${user.id}/${sampleIdRef.current}`;
+
+      let sampleSeconds = 0;
+      for (const seg of segments) {
+        const clip = clips.get(seg.id);
+        if (!clip) {
+          setError(`Missing recording for "${seg.id}". Please re-record it.`);
+          return;
+        }
+
+        const ext = extensionForMimeType(clip.mimeType);
+        const { error: uploadError } = await supabase.storage
+          .from("voice-samples")
+          .upload(`${storagePath}/${seg.id}.${ext}`, clip.blob, {
+            contentType: clip.mimeType,
+            upsert: true,
+          });
+
+        if (uploadError) {
+          setError(`Upload failed: ${uploadError.message}. You can try again.`);
+          return;
+        }
+
+        sampleSeconds += clip.durationSeconds;
+      }
+
+      const { error: insertError } = await supabase.from("voice_samples").insert({
+        id: sampleIdRef.current,
+        user_id: user.id,
+        storage_path: storagePath,
+        sample_tier: tier,
+        sample_seconds: Math.round(sampleSeconds),
+        consent_confirmed_at: consent,
+      });
+
+      if (insertError) {
+        setError(`Couldn't save your voice sample: ${insertError.message}. You can try again.`);
+        return;
+      }
+
+      router.replace(returnTo);
+    } catch {
+      setError("Something went wrong saving your voice sample. Check your connection and try again.");
+    } finally {
       setSubmitting(false);
-      setError("Your session expired. Please sign in again.");
-      return;
     }
-
-    if (!sampleIdRef.current) {
-      sampleIdRef.current = crypto.randomUUID();
-    }
-    const storagePath = `${user.id}/${sampleIdRef.current}`;
-
-    let sampleSeconds = 0;
-    for (const seg of segments) {
-      const clip = clips.get(seg.id);
-      if (!clip) {
-        setSubmitting(false);
-        setError(`Missing recording for "${seg.id}". Please re-record it.`);
-        return;
-      }
-
-      const ext = extensionForMimeType(clip.mimeType);
-      const { error: uploadError } = await supabase.storage
-        .from("voice-samples")
-        .upload(`${storagePath}/${seg.id}.${ext}`, clip.blob, {
-          contentType: clip.mimeType,
-          upsert: true,
-        });
-
-      if (uploadError) {
-        setSubmitting(false);
-        setError(`Upload failed: ${uploadError.message}. You can try again.`);
-        return;
-      }
-
-      sampleSeconds += clip.durationSeconds;
-    }
-
-    const { error: insertError } = await supabase.from("voice_samples").insert({
-      id: sampleIdRef.current,
-      user_id: user.id,
-      storage_path: storagePath,
-      sample_tier: tier,
-      sample_seconds: Math.round(sampleSeconds),
-      consent_confirmed_at: consent,
-    });
-
-    setSubmitting(false);
-
-    if (insertError) {
-      setError(`Couldn't save your voice sample: ${insertError.message}. You can try again.`);
-      return;
-    }
-
-    router.replace(returnTo);
   }
 
   return (

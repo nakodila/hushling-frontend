@@ -1,0 +1,110 @@
+.wrap {
+  min-height: 100dvh;
+  padding: var(--section-pad) clamp(18px, 5vw, 28px);
+  display: flex;
+  justify-content: center;
+}
+
+.panel {
+  width: 100%;
+  max-width: 640px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.heading {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(1.6rem, 4.5vw, 2.1rem);
+  margin: 0;
+}
+
+.card {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.sectionHeading {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.15rem;
+  margin: 0;
+}
+
+.subtext {
+  color: var(--periwinkle);
+  margin: 0;
+  line-height: 1.6;
+}
+
+.statusRow {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.statusLabel {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--periwinkle);
+}
+
+.statusValue {
+  color: var(--cream);
+}
+
+.confirmBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 14px 16px;
+  border: 1px solid var(--border-soft);
+  border-radius: 14px;
+}
+
+.warning {
+  margin: 0;
+  color: var(--cream);
+  line-height: 1.6;
+}
+
+.confirmInput {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--border-soft);
+  background: var(--ink);
+  color: var(--cream);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+}
+
+.confirmInput:focus {
+  outline: none;
+  border-color: var(--butter);
+}
+
+.confirmActions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.status {
+  color: var(--periwinkle);
+  margin: 0;
+}
+
+.error {
+  color: var(--blush);
+  font-size: 0.9rem;
+  margin: 0;
+}
