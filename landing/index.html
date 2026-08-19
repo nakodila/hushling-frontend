@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hushling — Lullabies in your own voice</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Karla:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav class="nav wrap">
+  <div class="logo">hush<span>ling</span></div>
+  <div class="nav-links">
+    <a href="#how">How it works</a>
+    <a href="#samples">Listen</a>
+    <a href="#trust">Privacy</a>
+  </div>
+  <a href="#" class="nav-cta">Start free</a>
+</nav>
+
+<header class="hero">
+  <div class="stars" aria-hidden="true">
+    <div class="star-dot" style="top:8%;  left:12%;"></div>
+    <div class="star-dot" style="top:18%; left:84%;"></div>
+    <div class="star-dot" style="top:32%; left:6%;"></div>
+    <div class="star-dot" style="top:10%; left:46%;"></div>
+    <div class="star-dot" style="top:36%; left:92%;"></div>
+    <div class="star-dot" style="top:4%;  left:68%;"></div>
+    <div class="star-dot" style="top:26%; left:58%;"></div>
+    <div class="star-dot" style="top:44%; left:20%;"></div>
+    <div class="star-dot" style="top:48%; left:78%;"></div>
+  </div>
+
+  <!-- Signature element: a crib mobile.
+       Each .swing group pivots exactly where its string meets the bar
+       (transform-box: fill-box in the CSS), so the sway never clips. -->
+  <svg class="mobile-hanger" viewBox="0 0 520 170" aria-hidden="true">
+    <!-- hanging cord + bar -->
+    <line x1="260" y1="0"  x2="260" y2="26" stroke="var(--periwinkle)" stroke-width="1.5" opacity="0.5"/>
+    <line x1="90"  y1="26" x2="430" y2="26" stroke="var(--periwinkle)" stroke-width="2"   opacity="0.55" stroke-linecap="round"/>
+
+    <!-- moon -->
+    <g transform="translate(135,26)">
+      <g class="swing">
+        <line x1="0" y1="0" x2="0" y2="58" stroke="var(--periwinkle)" stroke-width="1.5" opacity="0.5"/>
+        <g class="ornament" transform="translate(0,80)">
+          <path d="M 10 -16 A 19 19 0 1 0 10 16 A 24 24 0 0 1 10 -16 Z" fill="var(--butter)"/>
+        </g>
+      </g>
+    </g>
+
+    <!-- star -->
+    <g transform="translate(240,26)">
+      <g class="swing swing--d1">
+        <line x1="0" y1="0" x2="0" y2="42" stroke="var(--periwinkle)" stroke-width="1.5" opacity="0.5"/>
+        <g class="ornament ornament--d1" transform="translate(0,56)">
+          <path d="M0,-13 L3.8,-4 L13,-4 L5.6,1.8 L8,10.5 L0,5.2 L-8,10.5 L-5.6,1.8 L-13,-4 L-3.8,-4 Z" fill="var(--blush)"/>
+        </g>
+      </g>
+    </g>
+
+    <!-- cloud -->
+    <g transform="translate(335,26)">
+      <g class="swing swing--d2">
+        <line x1="0" y1="0" x2="0" y2="62" stroke="var(--periwinkle)" stroke-width="1.5" opacity="0.5"/>
+        <g class="ornament ornament--d2" transform="translate(0,76)">
+          <ellipse cx="0"   cy="2"  rx="24" ry="13" fill="var(--cream)"/>
+          <ellipse cx="14"  cy="-5" rx="14" ry="10" fill="var(--cream)"/>
+          <ellipse cx="-13" cy="-3" rx="12" ry="8"  fill="var(--cream)"/>
+        </g>
+      </g>
+    </g>
+
+    <!-- heart -->
+    <g transform="translate(420,26)">
+      <g class="swing swing--d3">
+        <line x1="0" y1="0" x2="0" y2="38" stroke="var(--periwinkle)" stroke-width="1.5" opacity="0.5"/>
+        <g class="ornament" transform="translate(0,52)">
+          <path d="M0,13 C-14,3 -14,-10 0,-3 C14,-10 14,3 0,13 Z" fill="var(--blush)"/>
+        </g>
+      </g>
+    </g>
+  </svg>
+
+  <div class="wrap">
+    <p class="eyebrow">a lullaby, sung by you</p>
+    <h1>Your voice, singing them<br><em>to sleep</em> — even if you can't carry a tune</h1>
+    <p class="sub">Record a few seconds of your voice. Choose a mood, a melody, even your child's name in the words. Hushling sings the rest, gently, in a voice they already know.</p>
+    <div class="hero-ctas">
+      <a href="#" class="btn-primary">Create your lullaby</a>
+      <a href="#samples" class="btn-secondary">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 2l9 5-9 5V2z" fill="currentColor"/></svg>
+        Listen to a sample
+      </a>
+    </div>
+  </div>
+</header>
+
+<section id="how">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="kicker">How it works</p>
+      <h2>Three small steps, one quiet ritual</h2>
+      <p>No studio, no singing lessons — just your phone and a few quiet minutes.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="9" y="2" width="6" height="12" rx="3" stroke="var(--butter)" stroke-width="1.6"/><path d="M5 11a7 7 0 0014 0M12 18v3" stroke="var(--butter)" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Record your voice</h3>
+        <p>Read a short passage aloud — about a minute. That's all Hushling needs to learn how you sound.</p>
+      </div>
+      <div class="step">
+        <div class="step-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 12c2-6 6-6 8 0s6 6 8 0" stroke="var(--butter)" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Shape the lullaby</h3>
+        <p>Pick a melody, a mood — dreamy, playful, calm — and add names or details that make it theirs.</p>
+      </div>
+      <div class="step">
+        <div class="step-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 3l2.6 5.8L21 10l-5 4.4L17.4 21 12 17.7 6.6 21 8 14.4 3 10l6.4-1.2L12 3z" stroke="var(--butter)" stroke-width="1.4" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Receive your lullaby</h3>
+        <p>In minutes, a full lullaby arrives — sung in your voice — ready to play tonight, and every night after.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="samples">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="kicker">Listen</p>
+      <h2>A few lullabies, sung by other parents</h2>
+      <p>Each one made from a one-minute recording.</p>
+    </div>
+    <div class="samples">
+      <div class="sample-card">
+        <button class="play-btn" aria-label="Play sample: Sleep Now, Little Star">
+          <svg viewBox="0 0 14 14" fill="none"><path d="M3 2l9 5-9 5V2z" fill="var(--ink)"/></svg>
+        </button>
+        <div class="sample-info">
+          <div class="title">Sleep Now, Little Star</div>
+          <div class="meta">2:14 · in Maya's voice, for her son Théo</div>
+          <svg class="constellation" viewBox="0 0 240 32" preserveAspectRatio="none">
+            <line x1="10" y1="16" x2="230" y2="12"/>
+            <circle cx="10" cy="16" r="2"/><circle cx="46" cy="10" r="1.6"/><circle cx="82" cy="20" r="2.2"/>
+            <circle cx="118" cy="8" r="1.6"/><circle cx="154" cy="18" r="2"/><circle cx="190" cy="12" r="1.6"/><circle cx="230" cy="12" r="2"/>
+          </svg>
+        </div>
+      </div>
+      <div class="sample-card">
+        <button class="play-btn" aria-label="Play sample: The Quiet Boat">
+          <svg viewBox="0 0 14 14" fill="none"><path d="M3 2l9 5-9 5V2z" fill="var(--ink)"/></svg>
+        </button>
+        <div class="sample-info">
+          <div class="title">The Quiet Boat</div>
+          <div class="meta">1:58 · in Dara's voice, for twins Nia & Kofi</div>
+          <svg class="constellation" viewBox="0 0 240 32" preserveAspectRatio="none">
+            <line x1="10" y1="10" x2="230" y2="20"/>
+            <circle cx="10" cy="10" r="2"/><circle cx="50" cy="20" r="1.6"/><circle cx="90" cy="6" r="2"/>
+            <circle cx="130" cy="18" r="1.6"/><circle cx="170" cy="10" r="2.2"/><circle cx="200" cy="22" r="1.6"/><circle cx="230" cy="20" r="2"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="trust">
+  <div class="wrap">
+    <div class="trust">
+      <svg class="trust-icon" width="72" height="72" viewBox="0 0 72 72" fill="none">
+        <circle cx="36" cy="36" r="34" fill="var(--plum-light)"/>
+        <path d="M36 16l16 7v11c0 12-7 18-16 22-9-4-16-10-16-22V23l16-7z" stroke="var(--butter)" stroke-width="2" stroke-linejoin="round"/>
+      </svg>
+      <div>
+        <p class="kicker">Your voice, your rules</p>
+        <h2>Recordings stay private, always</h2>
+        <p>A voice is personal — especially a parent's. Hushling only ever uses your recording to make lullabies for you, never to train shared models, and never shared with anyone else.</p>
+        <ul>
+          <li>Delete your voice model any time</li>
+          <li>Lullabies stay in your account only</li>
+          <li>No recording is ever used to train other users' voices</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonial">
+  <div class="wrap">
+    <blockquote>"My son fell asleep to a song I 'sang' about his stuffed elephant. I can't hold a tune to save my life — he'll never know the difference, and honestly, neither can I."</blockquote>
+    <cite>— Priya, parent of a 2-year-old</cite>
+  </div>
+</section>
+
+<section class="closing">
+  <div class="wrap">
+    <h2>Tonight's lullaby is a few minutes away</h2>
+    <p>Record your voice once. Sing to them for years.</p>
+    <a href="#" class="btn-primary">Create your lullaby</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">hushling — lullabies, in your own voice</div>
+</footer>
+
+</body>
+</html>
