@@ -1,3 +1,8 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import { supabase } from "@/lib/supabase/client";
 import { Button } from "@/components/ui/Button";
 import styles from "./page.module.css";
 
@@ -99,6 +104,30 @@ function PlayIcon() {
 }
 
 export default function Home() {
+  const router = useRouter();
+  const [checkingSession, setCheckingSession] = useState(true);
+
+  useEffect(() => {
+    let active = true;
+
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      if (!active) return;
+      if (session) {
+        router.replace("/home");
+        return;
+      }
+      setCheckingSession(false);
+    });
+
+    return () => {
+      active = false;
+    };
+  }, [router]);
+
+  if (checkingSession) {
+    return null;
+  }
+
   return (
     <>
       <nav className={`${styles.nav} ${styles.wrap}`}>
